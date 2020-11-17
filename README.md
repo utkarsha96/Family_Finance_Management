@@ -1,0 +1,6 @@
+# FamilyFinanceManagement
+Problem Statement- 
+  Effective control of money flows is our urgent need, and each of us solves the problem in his own way. However, if earlier people had to invent complex accounting systems to keep track of their earnings and expenses, today the situation has become simpler, and personal finance apps come to the rescue. Present apps are either paid or complex in functionality. Also, they collect users’ financial data like card or account numbers, national identity, etc and try to manage users’ finance automatically which raises the concern of trust and security of this data.
+
+Abstract- 
+  We have come up with a solution for the finance management, to develop a family finance managing application which will keep a record of daily expenses, earning, and savings of a family/person. This is the simplest type of money management apps when a user enters all the spending data on his own, simply by hand (manually). This application will allow keeping track of expenses and categorize them, planning large purchases. Financial saving apps are intended to perform very specific tasks, quite simple, but important. The main goal is to help the user manage his own budget.

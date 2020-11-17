@@ -1,5 +1,6 @@
 package com.example.android.familyfinancemanagement;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.android.familyfinancemanagement.data.FinanceContract;
 import com.example.android.familyfinancemanagement.data.FinanceContract.ExpenseEntry;
 import com.example.android.familyfinancemanagement.data.FinanceDbHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,20 +20,23 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class ExpensesActivity extends AppCompatActivity {
 
     private FinanceDbHelper mFinanceHelper = new FinanceDbHelper(this);
-
+    EditText mExpenseAmountEdit , mExpenseNameEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
 
-        // Setup FAB to open EditorActivity
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mExpenseAmountEdit = (EditText) findViewById(R.id.edit_expense_name);
+
+        TextView save = (TextView) findViewById(R.id.save_expense);
+        save.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ExpensesActivity.this, AddExpenseActivity.class);
-                startActivity(intent);
+
+                insertExpense();
+                //displayExpenseInfo();
             }
         });
     }
@@ -42,7 +48,7 @@ public class ExpensesActivity extends AppCompatActivity {
 
     }
 
-    public void displayExpenseInfo() {
+   public void displayExpenseInfo() {
 
         SQLiteDatabase db = mFinanceHelper.getReadableDatabase();
 
@@ -87,5 +93,50 @@ public class ExpensesActivity extends AppCompatActivity {
     }
 
 
+  /*  private void insertExpense()
+    {
+        FinanceDbHelper mFinanceHelper = new FinanceDbHelper(this);
+        SQLiteDatabase db = mFinanceHelper.getWritableDatabase();
+
+        String expenseAmountString = mExpenseAmountEdit.getText().toString().trim();
+        String expenseNameString = mExpenseNameEdit.getText().toString().trim();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ExpenseEntry.COLUMN_EXPENSE_AMOUNT, expenseAmountString);
+        contentValues.put(ExpenseEntry.COLUMN_EXPENSE_NAME,expenseNameString);
+
+        long newRowId = db.insert(ExpenseEntry.TABLE2_NAME, null, contentValues);
+
+        // Show a toast message depending on whether or not the insertion was successful
+        if (newRowId == -1) {
+            // If the row ID is -1, then there was an error with insertion.
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        } else {
+            // Otherwise, the insertion was successful and we can display a toast with the row ID.
+            Toast.makeText(this, "Saved with row id: " + newRowId, Toast.LENGTH_SHORT).show();
+        }
+
+    }*/
+  private void insertExpense() {
+      FinanceDbHelper mFinanceHelper = new FinanceDbHelper(this);
+      SQLiteDatabase db = mFinanceHelper.getWritableDatabase();
+
+      String expenseString = mExpenseAmountEdit.getText().toString().trim();
+
+
+      ContentValues contentValues = new ContentValues();
+      contentValues.put(ExpenseEntry.COLUMN_EXPENSE_AMOUNT, expenseString);
+
+      long newRowId = db.insert(ExpenseEntry.TABLE2_NAME, null, contentValues);
+
+      // Show a toast message depending on whether or not the insertion was successful
+      if (newRowId == -1) {
+          // If the row ID is -1, then there was an error with insertion.
+          Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+      } else {
+          // Otherwise, the insertion was successful and we can display a toast with the row ID.
+          Toast.makeText(this, "Saved with row id: " + newRowId, Toast.LENGTH_SHORT).show();
+      }
+  }
 
 }

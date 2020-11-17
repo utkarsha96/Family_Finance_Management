@@ -24,10 +24,6 @@
         <activity android:name=".ExpensesActivity"
             android:label="Expense"/>
 
-        <activity android:name=".AddExpenseActivity"
-            android:label="Add Expenses"/>
-
-
 
     </application>
 

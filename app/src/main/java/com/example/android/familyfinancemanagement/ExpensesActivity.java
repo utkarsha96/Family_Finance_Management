@@ -21,13 +21,14 @@ public class ExpensesActivity extends AppCompatActivity {
 
     private FinanceDbHelper mFinanceHelper = new FinanceDbHelper(this);
     EditText mExpenseAmountEdit , mExpenseNameEdit;
-
+    int total=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
 
-        mExpenseAmountEdit = (EditText) findViewById(R.id.edit_expense_name);
+        mExpenseNameEdit = (EditText) findViewById(R.id.edit_expense_name);
+        mExpenseAmountEdit = (EditText)findViewById(R.id.edit_expense_amount);
 
         TextView save = (TextView) findViewById(R.id.save_expense);
         save.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +37,9 @@ public class ExpensesActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 insertExpense();
-                //displayExpenseInfo();
+                displayExpenseInfo();
+                Intent expenseIntent = new Intent(ExpensesActivity.this, ExpensesActivity.class);
+                startActivity(expenseIntent);
             }
         });
     }
@@ -54,8 +57,9 @@ public class ExpensesActivity extends AppCompatActivity {
 
         String[] projection = {
               ExpenseEntry._ID,
+                ExpenseEntry.COLUMN_EXPENSE_AMOUNT,
                ExpenseEntry.COLUMN_EXPENSE_NAME,
-               ExpenseEntry.COLUMN_EXPENSE_AMOUNT
+              // ExpenseEntry.COLUMN_EXPENSE_AMOUNT
         };
 
         Cursor cursor = db.query(
@@ -77,14 +81,24 @@ public class ExpensesActivity extends AppCompatActivity {
 
             cursor = db.rawQuery("SELECT * FROM " + ExpenseEntry.TABLE2_NAME , null);
 
-            if (cursor.moveToLast()) {
+           /* if (cursor.moveToLast()) {
 
                 int currentID = cursor.getInt(idColumnIndex);
                 int currentName = cursor.getInt(expenseNameColumn);
                 int currentExpense = cursor.getInt(expenseAmountColumn);
 
-                displayView.append((currentName + currentExpense + "" ));
+                displayView.append((currentExpense +currentName + "" ));
+            }*/
+            while (cursor.moveToNext()) {
+
+              //  int currentID = cursor.getInt(idColumnIndex);
+              //  String currentName = cursor.getString(expenseNameColumn);
+                int currentExpense = cursor.getInt(expenseAmountColumn);
+                 total = total +currentExpense;
+                // Display the values from each column of the current row in the cursor in the TextView
+               // displayView.append((total + ""));
             }
+            displayView.append((total + ""));
 
 
         } finally {
@@ -121,11 +135,13 @@ public class ExpensesActivity extends AppCompatActivity {
       FinanceDbHelper mFinanceHelper = new FinanceDbHelper(this);
       SQLiteDatabase db = mFinanceHelper.getWritableDatabase();
 
-      String expenseString = mExpenseAmountEdit.getText().toString().trim();
+      String expenseAmountString = mExpenseAmountEdit.getText().toString().trim();
+      String expenseNameString = mExpenseNameEdit.getText().toString().trim();
 
 
       ContentValues contentValues = new ContentValues();
-      contentValues.put(ExpenseEntry.COLUMN_EXPENSE_AMOUNT, expenseString);
+      contentValues.put(ExpenseEntry.COLUMN_EXPENSE_AMOUNT, expenseAmountString);
+      contentValues.put(ExpenseEntry.COLUMN_EXPENSE_NAME, expenseNameString);
 
       long newRowId = db.insert(ExpenseEntry.TABLE2_NAME, null, contentValues);
 
@@ -137,6 +153,6 @@ public class ExpensesActivity extends AppCompatActivity {
           // Otherwise, the insertion was successful and we can display a toast with the row ID.
           Toast.makeText(this, "Saved with row id: " + newRowId, Toast.LENGTH_SHORT).show();
       }
-  }
 
+  }
 }

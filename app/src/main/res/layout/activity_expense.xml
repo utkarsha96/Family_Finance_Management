@@ -49,7 +49,7 @@
         android:layout_below="@+id/expense_name"/>
 
     <EditText
-
+        android:id="@+id/edit_expense_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_expense_name"

@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent numbersIntent = new Intent(MainActivity.this, IncomeActivity.class);
-                startActivity(numbersIntent);
+                Intent incomeIntent = new Intent(MainActivity.this, IncomeActivity.class);
+                startActivity(incomeIntent);
             }
         });
 
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent numbersIntent = new Intent(MainActivity.this, ExpensesActivity.class);
-                startActivity(numbersIntent);
+                Intent expenseIntent = new Intent(MainActivity.this, ExpensesActivity.class);
+                startActivity(expenseIntent);
             }
         });
     }

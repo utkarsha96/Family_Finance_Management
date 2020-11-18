@@ -22,7 +22,7 @@ public class IncomeActivity extends AppCompatActivity {
     private FinanceDbHelper mFinanceHelper = new FinanceDbHelper(this);
     Cursor cursor;
     private EditText mIncomeEditText;
-
+   int total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class IncomeActivity extends AppCompatActivity {
 
                 insertIncome();
                 dispalayInfo();
+
             }
         });
     }
@@ -46,7 +47,7 @@ public class IncomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-       // dispalayInfo();
+
     }
 
     private void insertIncome() {
@@ -59,16 +60,8 @@ public class IncomeActivity extends AppCompatActivity {
         ContentValues contentValues = new ContentValues();
         contentValues.put(IncomeEntry.COLUMN_INCOME_AMOUNT, incomeString);
 
-        long newRowId = db.insert(IncomeEntry.TABLE1_NAME, null, contentValues);
+       db.insert(IncomeEntry.TABLE1_NAME, null, contentValues);
 
-        // Show a toast message depending on whether or not the insertion was successful
-        if (newRowId == -1) {
-            // If the row ID is -1, then there was an error with insertion.
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-        } else {
-            // Otherwise, the insertion was successful and we can display a toast with the row ID.
-            Toast.makeText(this, "Saved with row id: " + newRowId, Toast.LENGTH_SHORT).show();
-        }
     }
 
 
@@ -100,14 +93,14 @@ public class IncomeActivity extends AppCompatActivity {
 
                 cursor = db.rawQuery("SELECT * FROM " + IncomeEntry.TABLE1_NAME , null);
 
-            if (cursor.moveToLast()) {
 
-                int currentID = cursor.getInt(idColumnIndex);
+            while (cursor.moveToNext()) {
+
                 int currentAmount = cursor.getInt(incomeColumnIndex);
+                total = total + currentAmount;
 
-                displayView.append((currentAmount + ""));
             }
-
+            displayView.append((total + ""));
 
         } finally {
             cursor.close();

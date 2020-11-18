@@ -6,11 +6,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,10 +18,13 @@ import com.example.android.familyfinancemanagement.data.FinanceContract.IncomeEn
 
 public class IncomeActivity extends AppCompatActivity {
 
+
+    public static int mresult;
     private FinanceDbHelper mFinanceHelper = new FinanceDbHelper(this);
     Cursor cursor;
     private EditText mIncomeEditText;
-   int total;
+    int incomeTotal;
+    public static int result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,10 +99,10 @@ public class IncomeActivity extends AppCompatActivity {
             while (cursor.moveToNext()) {
 
                 int currentAmount = cursor.getInt(incomeColumnIndex);
-                total = total + currentAmount;
-
+                incomeTotal = incomeTotal+ currentAmount;
+                 mresult = incomeTotal;
             }
-            displayView.append((total + ""));
+            displayView.append((incomeTotal + ""));
 
         } finally {
             cursor.close();

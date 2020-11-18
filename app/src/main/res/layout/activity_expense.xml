@@ -59,12 +59,27 @@
         android:padding="20dp"/>
 
     <TextView
+        android:id="@+id/current_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current balance:"
+        android:textSize="25dp"
+        android:layout_below="@+id/expense_amount"/>
+
+    <TextView
+        android:id="@+id/show_current_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/current_balance"
+        android:layout_below="@+id/edit_expense_amount"/>
+
+    <TextView
         android:id="@+id/save_expense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:layout_gravity="center"
         android:padding="30dp"
-        android:layout_below="@+id/expense_amount"/>
+        android:layout_below="@+id/current_balance"/>
 
 </RelativeLayout>

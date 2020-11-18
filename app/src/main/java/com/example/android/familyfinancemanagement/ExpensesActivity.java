@@ -2,6 +2,7 @@ package com.example.android.familyfinancemanagement;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.AbstractCursor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -21,7 +22,8 @@ public class ExpensesActivity extends AppCompatActivity {
 
     private FinanceDbHelper mFinanceHelper = new FinanceDbHelper(this);
     EditText mExpenseAmountEdit , mExpenseNameEdit;
-    int total=0;
+    int expensesTotal=0 , currentBalance;
+    Cursor cursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +40,8 @@ public class ExpensesActivity extends AppCompatActivity {
 
                 insertExpense();
                 displayExpenseInfo();
-                Intent expenseIntent = new Intent(ExpensesActivity.this, ExpensesActivity.class);
-                startActivity(expenseIntent);
+                displayCurrentBalance();
+
             }
         });
     }
@@ -94,18 +96,33 @@ public class ExpensesActivity extends AppCompatActivity {
               //  int currentID = cursor.getInt(idColumnIndex);
               //  String currentName = cursor.getString(expenseNameColumn);
                 int currentExpense = cursor.getInt(expenseAmountColumn);
-                 total = total +currentExpense;
+                 expensesTotal = expensesTotal +currentExpense;
                 // Display the values from each column of the current row in the cursor in the TextView
                // displayView.append((total + ""));
             }
-            displayView.append((total + ""));
+            displayView.append((expensesTotal + ""));
+
 
 
         } finally {
             cursor.close();
         }
     }
+  public void displayCurrentBalance()
+  {
+      currentBalance =  IncomeActivity.mresult -   expensesTotal;
+      TextView show = (TextView) findViewById(R.id.show_current_balance);
+      show.append(IncomeActivity.mresult + "");
+      try {
+          show.append(currentBalance + "");
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
 
+
+
+
+  }
 
   /*  private void insertExpense()
     {

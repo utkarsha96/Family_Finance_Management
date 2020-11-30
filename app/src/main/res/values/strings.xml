@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Family Finance Management</string>
+    <string name="expenses_grocery">Grocery</string>
+    <string name="expenses_houseMaintenance">House Maintenance</string>
+    <string name="expenses_fuel">Fuel</string>
+    <string name="expenses_electricityBill">Electricity / Gas Bill</string>
+    <string name="expenses_tax">Govt. Tax</string>
+    <string name="expenses_entertainment">Entertainment</string>
+    <string name="expenses_travel">Travel</string>
+    <string name="expenses_medical">Medical</string>
+
+    <string name="bank_account">Bank Account</string>
+    <string name="debit_card">Debit Card</string>
+    <string name="credit_card">Credit Card</string>
+
+
 </resources>

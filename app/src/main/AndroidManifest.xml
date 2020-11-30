@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FamilyFinanceManagement">
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".SavingStats" />
+        <activity android:name=".IncExpSavStats" />
+        <activity android:name=".TestTrack" />
+        <activity android:name=".TrackExpense" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,15 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".IncomeActivity"
-            android:label="Income"/>
-
-        <activity android:name=".ExpensesActivity"
-            android:label="Expense"/>
-
-
+        <activity
+            android:name=".IncomeActivity"
+            android:label="Income" />
+        <activity
+            android:name=".ExpensesActivity"
+            android:label="Expense" />
     </application>
 
 </manifest>

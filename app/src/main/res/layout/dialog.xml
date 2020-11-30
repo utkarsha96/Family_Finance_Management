@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="16dp"
+    android:orientation="vertical"
+    tools:context=".Settings">
+
+    <Spinner
+        android:id="@+id/edit_acc_type"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:hint="Select Acc/Card "
+        android:inputType="text"
+        android:padding="20dp"
+        android:spinnerMode="dropdown"
+        />
+
+    <EditText
+        android:id="@+id/AccountName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Account Name"
+        android:layout_below="@+id/edit_acc_type"/>
+    <EditText
+        android:id="@+id/AccountCB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Account Current Balance"
+        android:layout_below="@+id/AccountName"/>
+
+
+
+</RelativeLayout>

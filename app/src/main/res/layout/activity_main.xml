@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,63 +8,134 @@
     tools:context=".MainActivity">
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text= "Home"
-        android:layout_weight="1"
-        android:textSize="30dp"
-        android:gravity="center"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text= "Monthly"
-        android:layout_weight="1"
-        android:textSize="30dp"
-        android:gravity="center"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text= "Yearly"
-        android:layout_weight="1"
-        android:textSize="30dp"
-        android:gravity="center"/>
-
-</LinearLayout>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/add_income"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Income"
-        android:background="@color/purple_200"
-        android:textAllCaps="true"
-        android:textSize="35dp"
-        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp"
+        >
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Home Page"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="#009688"
+            android:layout_gravity="center"
+            android:padding="20dp"
 
-        />
+            />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/add_expense"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Expenses"
-        android:layout_below="@+id/add_income"
-        android:textAllCaps="true"
-        android:textSize="35dp"
-        android:background="@color/purple_500"
-        android:gravity="center"
-        />
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Income"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:id="@+id/btn_add_income"
+            ></Button>
+    </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Expense"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:id="@+id/btn_add_expense"
+            ></Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track Inc-Exp"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:id="@+id/btn_track"
+            ></Button>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expense Stats"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:id="@+id/btn_exp_stats"
+            ></Button>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saving Stats"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:id="@+id/btn_sav_stats"
+            ></Button>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:id="@+id/btn_setting"
+            ></Button>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Goal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:id="@+id/btn_set_goal"
+            ></Button>
+    </LinearLayout>
+
 </LinearLayout>
